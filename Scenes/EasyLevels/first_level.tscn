@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://c48qn08ef8qg6"]
+
+[ext_resource type="Script" path="res://Scripts/General/first_level.gd" id="1_wwrse"]
+[ext_resource type="PackedScene" uid="uid://e7pprifta7nh" path="res://Scenes/EasyLevels/platform.tscn" id="2_b8yvo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sypkp"]
+size = Vector2(23, 616)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nk8ry"]
+size = Vector2(809, 20)
+
+[node name="First_Level" type="Node2D"]
+script = ExtResource("1_wwrse")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(400, 300)
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(800, 150)
+offset_top = 450.0
+offset_right = 800.0
+offset_bottom = 600.0
+mouse_filter = 2
+
+[node name="Platform" parent="." instance=ExtResource("2_b8yvo")]
+position = Vector2(72, 535)
+color = Color(0, 0, 1, 1)
+
+[node name="Platform2" parent="." instance=ExtResource("2_b8yvo")]
+position = Vector2(380, 535)
+color = Color(0, 1, 0, 1)
+
+[node name="Platform3" parent="." instance=ExtResource("2_b8yvo")]
+position = Vector2(716, 535)
+color = Color(1, 0, 0, 1)
+
+[node name="LeftBarrier" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftBarrier"]
+position = Vector2(-11.5, 298)
+shape = SubResource("RectangleShape2D_sypkp")
+
+[node name="RightBarrier" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightBarrier"]
+position = Vector2(813, 298)
+shape = SubResource("RectangleShape2D_sypkp")
+
+[node name="TopBarrier" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBarrier"]
+position = Vector2(394.5, -8)
+shape = SubResource("RectangleShape2D_nk8ry")
+
+[node name="DownBarrier" type="StaticBody2D" parent="."]
+position = Vector2(0, 627)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DownBarrier"]
+position = Vector2(394.5, -8)
+shape = SubResource("RectangleShape2D_nk8ry")
